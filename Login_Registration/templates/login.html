@@ -1,0 +1,23 @@
+<div class="login">
+    <h1>Log In</h1>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li class="text-danger" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form action="/login" method="post">
+        <div class="form-group">
+            {% csrf_token %}
+            <label for="email">Email</label>
+            <input type="text" id="email" name="logInEmail" placeholder="Enter email" class="form-control">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="logInPassword" placeholder="password" class="form-control">
+
+            <input type="submit" value="Log In" class="btn btn-primary">
+        </div>
+    </form>
+</div>
